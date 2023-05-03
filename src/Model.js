@@ -6,7 +6,7 @@ source: https://sketchfab.com/3d-models/laptop-3103a5c13816485db1eed96681e1e04b
 title: Laptop
 */
 
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Model(props) {
