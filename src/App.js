@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { Suspense, useRef } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Stage } from '@react-three/drei'
+import { Model } from './Model'
+export default function Viewer() {
+  const ref = useRef()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Canvas shadows dpr={[1, 2]} camera={{ fov: 50 }}>
+      <Suspense fallback={null}>
+        <Stage controls={ref} preset="rembrandt" intensity={1} environment="city">
+          false
+          <Model />
+          false
+        </Stage>
+      </Suspense>
+      <OrbitControls ref={ref}
+        autoRotate
+      />
+    </Canvas>
+  )
 }
-
-export default App;
